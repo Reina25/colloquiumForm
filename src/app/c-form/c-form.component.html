@@ -1,0 +1,151 @@
+<div *ngIf="submitted" class="alert alert-success">
+    <h5><i class="icon fas fa-check"></i> Form Submitted!</h5>
+    <h5> Thank you for your response.</h5>
+
+    <div class="row pb-2">
+        <h6 class="col-3">Redirecting you to iConnect...</h6>
+        <div class="spinner-border " role="status">
+        </div>
+    </div>
+
+</div>
+
+<div [class.d-none]="submitted" class="card card-primary">
+
+    <div [class.d-none]="submitted" class="card-header"> طلب اشتراك في امتحانت الكولوكيوم</div>
+
+
+    <div class="main-area">
+        <div class="content-area">
+
+            <div class="container">
+                <div class="row">
+
+
+
+
+                    <div [class.d-none]="submitted" id="form" class="form-area col-12 px-5  py-3">
+
+
+
+                        <form #cForm="ngForm" (ngSubmit)="onSubmit(cForm.value)">
+
+
+                            <p> <span style="color: #ff0000; font-size: large;">* &nbsp;</span>Required</p>
+
+
+                            <h5 class="text-primary" id="sections">Section 1 - Applicant's Information</h5>
+
+                            <div class="row">
+                                <div id="question 1 student name" class="col-6 pe-3">
+                                    <div class="form-group">
+                                        <label>{{q1}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="text" name="q1" #studentName="ngModel"
+                                            [class.is-invalid]="studentName.invalid && studentName.touched"
+                                            class="form-control" [(ngModel)]="selectedOption1"
+                                            (ngModelChange)="saveSelection1($event)" required>
+                                        <small class="text-danger"
+                                            [class.d-none]="studentName.untouched || studentName.valid">Name is required</small>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div id="question 2 student gender " class="col-6 ps-3">
+                                    <label for="">{{q2}}<span style="color: #ff0000; font-size: large;">*
+                                            &nbsp;</span></label>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="male" value="Male"
+                                            #radios1="ngModel" [class.is-invalid]="radios1.invalid && radios1.touched"
+                                            required [(ngModel)]="selectedOption2"
+                                            (ngModelChange)="saveSelection2($event)">
+                                        <label class="form-check-label" for="male">
+                                            Male
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="q2" id="female"
+                                            value="Female" #radios2="ngModel"
+                                            [class.is-invalid]="radios2.invalid && radios2.touched" required
+                                            [(ngModel)]="selectedOption2" (ngModelChange)="saveSelection2($event)">
+                                        <label class="form-check-label" for="female">
+                                            Female
+                                        </label>
+                                    </div>
+
+                                    <div class=" pb-3">
+                                        <small class="text-danger "
+                                            [class.d-none]="radios2.valid || radios2.untouched">Gender is required</small>
+
+                                    </div>
+                                </div>
+
+                                <div id="question 3 student phone number" class="col-6 pe-3">
+                                    <div class="form-group">
+                                        <label>{{q3}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="tel" name="q3" #studentPhone="ngModel"
+                                            [class.is-invalid]="studentPhone.invalid && studentPhone.touched"
+                                            class="form-control" [(ngModel)]="selectedOption3"
+                                            (ngModelChange)="saveSelection3($event)" placeholder="(+000)-00-000000"  data-inputmask="'mask': ['(+999)-99-999999']" data-mask  required>
+                                        <small class="text-danger"
+                                            [class.d-none]="studentPhone.untouched || studentPhone.valid">Phone number is required</small>
+                                    </div>
+                                </div>
+
+                                
+
+                                
+
+                                <div id="question 4 student email address" class="col-6 ps-3">
+                                    <div class="form-group">
+                                        <label>{{q4}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="text" name="q4" #studentEmail="ngModel"
+                                            [class.is-invalid]="studentEmail.invalid && studentEmail.touched"
+                                            class="form-control" [(ngModel)]="selectedOption4"
+                                            (ngModelChange)="saveSelection4($event)"  pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$" required>
+
+                        
+
+                                            <div *ngIf="studentEmail.errors || (studentEmail.invalid || studentEmail.touched)">
+                                                <small class="text-danger" *ngIf="studentEmail.errors['required']">Email is required</small>
+                                                <small class="text-danger" *ngIf="studentEmail.errors['pattern']">Please enter a valid email address</small>
+                                          </div>
+                                    </div>
+                                </div>
+
+                            
+
+                             
+
+                            </div>
+
+
+
+
+
+
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Default file input example<span
+                                        style="color: #ff0000; font-size: large;">* &nbsp;</span></label>
+                                <input class="form-control" type="file" id="formFile" ngmodel>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
