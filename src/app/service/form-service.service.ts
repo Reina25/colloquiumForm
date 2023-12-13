@@ -56,12 +56,20 @@ export class FormServiceService {
   }
 
 
-  onSubmit(User: { studentID: string, eventID: string, radios1: string, radios2: string, radios3: string, suggestions: string }) {
+  onSubmit(User: {   studentName: string,
+    radios1: string,
+    studentPhoneCode: string,
+    studentPhone: string,
+    studentEmail: string,
+    studentPlaceBirth: string,
+    studentDateBirth: string,
+    personalPhoto: File, 
+  }) {
 
     console.log(User);
     const headers = new HttpHeaders({ 'myHeader': 'BAUEventSurvey' });
     this.http.post<{ name: string }>(
-      'https://eventsurvey-a3ee1-default-rtdb.firebaseio.com/responses.json',
+      'https://colloquiumform-default-rtdb.firebaseio.com/formResposnse.json',
       User, { headers: headers })
       .subscribe((res) => {
         console.log(res);
