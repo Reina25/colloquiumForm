@@ -27,6 +27,8 @@
                     <div [class.d-none]="submitted" id="form" class="form-area col-12 px-5  py-3">
                         {{cForm.value | json}}
 
+                        {{test}}
+
 
 
                         <form #cForm="ngForm" (ngSubmit)="onSubmit(cForm.value)">
@@ -190,12 +192,16 @@
                                         <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
                                             &nbsp;</span></label>
                                         <input type="file" id="file1" placeholder="File must be of type jpg"
-                                        #personalPhoto="ngModel" name="PersonalPhoto"
+                                        #personalPhoto="ngModel" name="PersonalPhoto"  accept="image/jpeg"
                                         [class.is-invalid]="personalPhoto.invalid && personalPhoto.touched"
-                                        class="form-control" [(ngModel)]="selectedOption7"
-                                        (ngModelChange)="saveSelection7($event)" required >
+                                        class="form-control" ngModel
+                                         required >
                                       </div>
                                 </div>
+                            
+
+                                
+
                              
 
                              
