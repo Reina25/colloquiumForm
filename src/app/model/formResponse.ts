@@ -7,6 +7,7 @@ export class formResponse{
     studentEmail: string;
     studentPlaceBirth: string;
     studentDateBirth: string;
-    personalPhoto: File;
+    personalPhoto: any;
+    completeNumber: string;
 
 }

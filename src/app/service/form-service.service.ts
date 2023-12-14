@@ -68,6 +68,7 @@ export class FormServiceService {
     studentPlaceBirth: string,
     studentDateBirth: string,
     personalPhoto: File, 
+    completePhone: string
   }) {
 
     console.log(User);

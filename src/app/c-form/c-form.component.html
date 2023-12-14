@@ -27,7 +27,7 @@
                     <div [class.d-none]="submitted" id="form" class="form-area col-12 px-5  py-3">
                         {{cForm.value | json}}
 
-                        {{test}}
+                        
 
 
 
@@ -40,6 +40,28 @@
                             <h5 class="text-primary" id="sections">Section 1 - Applicant's Information</h5>
 
                             <div class="row">
+
+                                <div [class.d-none]="!noshow" id="student complete phone" class="col-6 pe-3">
+                                    <div class="form-group">
+                                       
+                                        <input type="text" name="completePhone" #completePhone="ngModel"
+                                            class="form-control" [(ngModel)]="selectedOptionExtra + selectedOption3"
+                                             ngModel required>
+                                        
+                                    </div>
+                                </div>
+
+                                <div  [class.d-none]="!noshow" id="question 1 student name" class="col-6 pe-3">
+                                    <div class="form-group">
+                                       
+                                        <input type="text" name="personalPhoto" #personalPhoto="ngModel"
+                                            class="form-control" [(ngModel)]="test"
+                                             required>
+                                        
+                                    </div>
+                                </div>
+
+
                                 <div id="question 1 student name" class="col-6 pe-3">
                                     <div class="form-group">
                                         <label>{{q1}}<span style="color: #ff0000; font-size: large;">*
@@ -52,6 +74,8 @@
                                             [class.d-none]="studentName.untouched || studentName.valid">Name is required</small>
                                     </div>
                                 </div>
+
+                              
 
 
 
@@ -186,27 +210,52 @@
                                             [class.d-none]="studentDateBirth.untouched || studentDateBirth.valid">Date of birth is required</small>
                                     </div>
                                 </div>
+                            </div>
 
+                            <h5 class="text-primary " id="sections">Section 2 - Required Documents</h5>
+
+                            <div class="row">
                                 <div id="question 7 upload jpg personal photo" class="col-6 pe-3">
                                     <div class="mb-3 form-group">
                                         <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
                                             &nbsp;</span></label>
-                                        <input type="file" id="file1" placeholder="File must be of type jpg"
+                                            <input type="file"  class="form-control" (change)="onFileSelected($event)" 
+                                            name="personalPhoto" accept="image/*"
+                                            
+                                            >  
+                                           
+
+                                        <!-- <input type="file" id="file1" placeholder="File must be of type jpg"
                                         #personalPhoto="ngModel" name="PersonalPhoto"  accept="image/jpeg"
                                         [class.is-invalid]="personalPhoto.invalid && personalPhoto.touched"
                                         class="form-control" ngModel
-                                         required >
-                                      </div>
+                                         required > -->
+                                         <small class="text-danger"
+                                         [class.d-none]="personalPhoto.untouched || personalPhoto.valid">This field is required</small>
+
+
+                                    </div>
                                 </div>
-                            
+
+                                <!-- <div id="question 7 personal photo" class="col-6 ps-3">
+                                    <div class="form-group">
+                                        <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" (change)="onFileSelected($event)" name="personalPhoto" accept="image/*" #personalPhoto="ngModel"   
+                                       
+                                            [class.is-invalid]="personalPhoto.invalid && personalPhoto.touched"
+                                            class="form-control" 
+                                             required ngModel>
+                                        <small class="text-danger"
+                                            [class.d-none]="personalPhoto.untouched || personalPhoto.valid">This field is required</small>
+                                    </div>
+                                </div> -->
 
                                 
-
-                             
-
-                             
+                                
 
                             </div>
+
 
                             <div class="row">
                                 
@@ -221,6 +270,7 @@
                 
                 
                               </div>
+                         
 
 
 
@@ -232,6 +282,8 @@
 
 
                         </form>
+
+
 
                     </div>
 

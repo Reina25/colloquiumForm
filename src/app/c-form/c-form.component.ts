@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormServiceService } from '../service/form-service.service';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -70,36 +70,70 @@ export class CFormComponent implements OnInit {
   // personal photo
   selectedFile1: File;
 
+  
+  noshow: boolean = false;
   test: any;
 
 
 
 
+ 
 
+
+  selectedFile: File | undefined;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const imageContent = reader.result ;
+        this.test = imageContent;
+        // Do something with the image content, like send it to the server
+        console.log('Image Content:', imageContent);
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
+
+  // onSubmit2() {
+  //   if (this.selectedFile) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const imageContent = reader.result as string;
+  //       this.test = imageContent;
+  //       // Do something with the image content, like send it to the server
+  //       console.log('Image Content:', imageContent);
+  //       console.log(this.test);
+  //     };
+  //     reader.readAsDataURL(this.selectedFile);
+  //   }
+  // }
+
+  // @ViewChild('fileInput') fileInput!: ElementRef;
+
+  // onSubmit2() {
+  //   const fileInputElement = this.fileInput.nativeElement as HTMLInputElement;
+  //   const file = fileInputElement.files && fileInputElement.files[0];
+
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const imageContent = reader.result as string;
+  //       // Do something with the image content here
+  //       console.log('Image Content:', imageContent);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
 
 
 
 
 ngOnInit() {
 
-  this.response = {
-    studentName: this.savedOption1 ,
-    radios1: this.savedOption2,
-    studentPhoneCode: this.selectedOptionExtra,
-    studentPhone: this.selectedOption3,
-    studentEmail: this.savedOption4,
-    studentPlaceBirth: this.savedOption5,
-    studentDateBirth: this.savedOption6,
-    personalPhoto: this.selectedFile1,
 
-  }
-this.test = this.selectedOption1;
  
-  
-
-
-
-
  // save student response of survey (if changed)
   this.savedOption1 = sessionStorage.getItem('selectedOption1');
 
@@ -118,6 +152,7 @@ this.test = this.selectedOption1;
   }
 
   this.savedOptionExtra = sessionStorage.getItem('selectedOptionExtra');
+
 
   if (this.savedOptionExtra) {
     this.selectedOptionExtra = this.savedOptionExtra;
@@ -160,7 +195,11 @@ this.test = this.selectedOption1;
 
 
 
+
+
 }
+
+
 
 
 
@@ -178,6 +217,7 @@ saveSelection2(newValue: string) {
 saveSelectionExtra(newValue: string) {
   this.selectedOptionExtra = newValue;
   sessionStorage.setItem('selectedOptionExtra', this.selectedOptionExtra);
+
 }
 
 saveSelection3(newValue: string) {
@@ -211,11 +251,13 @@ saveSelection6(newValue: string) {
     studentEmail: string,
     studentPlaceBirth: string,
     studentDateBirth: string,
-    personalPhoto: File, 
+    personalPhoto: File,
+    completePhone: string, 
   }){
     this.submitted = true;
    
     this.formService.onSubmit(User);
+
 
     setTimeout(() => {
       window.location.href = 'https://icas.bau.edu.lb:8443/cas/login?service=https://mis.bau.edu.lb/web/v12/iconnectv12/cas/sso.aspx';
