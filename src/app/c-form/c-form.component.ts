@@ -3,6 +3,7 @@ import { FormServiceService } from '../service/form-service.service';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { formResponse } from '../model/formResponse';
+import { UploadedFile } from '../model/uploadedFile';
 
 
 @Component({
@@ -68,64 +69,92 @@ export class CFormComponent implements OnInit {
   savedOption6: any;
 
   // personal photo
-  selectedFile1: File;
 
   
   noshow: boolean = false;
-  test: any;
 
+  
+  uploadedFiles: UploadedFile[] = [];
+
+
+
+
+  selectedFile1: any | undefined;
+
+  selectedFile2: any | undefined;
+
+
+  onFileSelected2(event: any) {
+    const file: File = event.target.files[0];
+    if (file && file.type === 'image/jpeg') {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const uploadedFile: UploadedFile = {
+          name: file.name,
+          content: reader.result as string // Assuming you want base64 representation
+        };
+        this.uploadedFiles.push(uploadedFile);
+        this.selectedFile1 = uploadedFile;
+        // Save to localStorage or sessionStorage
+        localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
+        localStorage.setItem('selectedFile1', JSON.stringify(this.selectedFile1));
+
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  onFileSelected3(event: any) {
+    const file: File = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const uploadedFile: UploadedFile = {
+          name: file.name,
+          content: reader.result as string // Assuming you want base64 representation
+        };
+        this.uploadedFiles.push(uploadedFile);
+        this.selectedFile2 = uploadedFile;
+        // Save to localStorage or sessionStorage
+        localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
+        localStorage.setItem('selectedFile2', JSON.stringify(this.selectedFile2));
+
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  deleteFile(file: UploadedFile) {
+    this.uploadedFiles = this.uploadedFiles.filter(f => f !== file);
+    localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
+    localStorage.setItem('selectedFile1', null);
+    const storedFile1 = localStorage.getItem('selectedFile1');
+    if (storedFile1) {
+      this.selectedFile1 = JSON.parse(storedFile1);
+    }
+
+
+
+  }
+
+  // onFileSelected1(event: any) {
+  //   this.selectedFile1 = event.target.files[0];
+  //   if (this.selectedFile1) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       const imageContent = reader.result ;
+  //       this.selectedFile1 = imageContent;
+
+  //     };
+  //     reader.readAsDataURL(this.selectedFile1);
+     
+  //   }
+  // }
 
 
 
  
-
-
-  selectedFile: File | undefined;
-
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-    if (this.selectedFile) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const imageContent = reader.result ;
-        this.test = imageContent;
-        // Do something with the image content, like send it to the server
-        console.log('Image Content:', imageContent);
-      };
-      reader.readAsDataURL(this.selectedFile);
-    }
-  }
-
-  // onSubmit2() {
-  //   if (this.selectedFile) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       const imageContent = reader.result as string;
-  //       this.test = imageContent;
-  //       // Do something with the image content, like send it to the server
-  //       console.log('Image Content:', imageContent);
-  //       console.log(this.test);
-  //     };
-  //     reader.readAsDataURL(this.selectedFile);
-  //   }
-  // }
-
-  // @ViewChild('fileInput') fileInput!: ElementRef;
-
-  // onSubmit2() {
-  //   const fileInputElement = this.fileInput.nativeElement as HTMLInputElement;
-  //   const file = fileInputElement.files && fileInputElement.files[0];
-
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       const imageContent = reader.result as string;
-  //       // Do something with the image content here
-  //       console.log('Image Content:', imageContent);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
 
 
 
@@ -193,6 +222,22 @@ ngOnInit() {
    
   }
 
+  const storedFiles = localStorage.getItem('uploadedFiles');
+  if (storedFiles) {
+    this.uploadedFiles = JSON.parse(storedFiles);
+  }
+
+  const storedFile1 = localStorage.getItem('selectedFile1');
+  if (storedFile1) {
+    this.selectedFile1 = JSON.parse(storedFile1);
+  }
+
+  const storedFile2 = localStorage.getItem('selectedFile2');
+  if (storedFile2) {
+    this.selectedFile2 = JSON.parse(storedFile2);
+  }
+
+
 
 
 
@@ -242,6 +287,7 @@ saveSelection6(newValue: string) {
 
 
 
+
 // submit student response and redirect to iConnect once done
   onSubmit(User: {
      studentName: string,
@@ -251,7 +297,7 @@ saveSelection6(newValue: string) {
     studentEmail: string,
     studentPlaceBirth: string,
     studentDateBirth: string,
-    personalPhoto: File,
+    personalPhoto: string,
     completePhone: string, 
   }){
     this.submitted = true;

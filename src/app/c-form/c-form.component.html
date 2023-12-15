@@ -41,25 +41,39 @@
 
                             <div class="row">
 
-                                <div [class.d-none]="!noshow" id="student complete phone" class="col-6 pe-3">
-                                    <div class="form-group">
-                                       
-                                        <input type="text" name="completePhone" #completePhone="ngModel"
-                                            class="form-control" [(ngModel)]="selectedOptionExtra + selectedOption3"
-                                             ngModel required>
-                                        
+                                <div [class.d-none]="!noshow" >
+                                    <div id="student complete phone" class="col-6 pe-3">
+                                        <div class="form-group">
+                                           
+                                            <input type="text" name="completePhone" #completePhone="ngModel"
+                                                class="form-control" [(ngModel)]="selectedOptionExtra + selectedOption3"
+                                                 ngModel required>
+                                            
+                                        </div>
+                                    </div>
+    
+                                    <div id="personal photo" class="col-6 pe-3">
+                                        <div class="form-group">
+                                           
+                                            <input type="text" name="personalPhoto" #personalPhoto="ngModel"
+                                                class="form-control" [(ngModel)]="selectedFile1"
+                                                 required>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div id="hawiye" class="col-6 pe-3">
+                                        <div class="form-group">
+                                           
+                                            <input type="text" name="hawiye" #hawiye="ngModel"
+                                                class="form-control" [(ngModel)]="selectedFile2"
+                                                 required>
+                                            
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div  [class.d-none]="!noshow" id="question 1 student name" class="col-6 pe-3">
-                                    <div class="form-group">
-                                       
-                                        <input type="text" name="personalPhoto" #personalPhoto="ngModel"
-                                            class="form-control" [(ngModel)]="test"
-                                             required>
-                                        
-                                    </div>
-                                </div>
+                               
 
 
                                 <div id="question 1 student name" class="col-6 pe-3">
@@ -219,41 +233,31 @@
                                     <div class="mb-3 form-group">
                                         <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
                                             &nbsp;</span></label>
-                                            <input type="file"  class="form-control" (change)="onFileSelected($event)" 
-                                            name="personalPhoto" accept="image/*"
-                                            
-                                            >  
-                                           
-
-                                        <!-- <input type="file" id="file1" placeholder="File must be of type jpg"
-                                        #personalPhoto="ngModel" name="PersonalPhoto"  accept="image/jpeg"
-                                        [class.is-invalid]="personalPhoto.invalid && personalPhoto.touched"
-                                        class="form-control" ngModel
-                                         required > -->
-                                         <small class="text-danger"
-                                         [class.d-none]="personalPhoto.untouched || personalPhoto.valid">This field is required</small>
+                                            <input type="file"  class="form-control" (change)="onFileSelected2($event)"  
+                                            name="personalPhoto" accept="image/jpeg"
+                                             required>  
+                                        
 
 
                                     </div>
                                 </div>
 
-                                <!-- <div id="question 7 personal photo" class="col-6 ps-3">
-                                    <div class="form-group">
-                                        <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
-                                                &nbsp;</span></label>
-                                        <input type="file" (change)="onFileSelected($event)" name="personalPhoto" accept="image/*" #personalPhoto="ngModel"   
-                                       
-                                            [class.is-invalid]="personalPhoto.invalid && personalPhoto.touched"
-                                            class="form-control" 
-                                             required ngModel>
-                                        <small class="text-danger"
-                                            [class.d-none]="personalPhoto.untouched || personalPhoto.valid">This field is required</small>
+                                <div id="question 8 upload pdf hawiye" class="col-6 ps-3">
+                                    <div class="mb-3 form-group">
+                                        <label>{{q8}}<span style="color: #ff0000; font-size: large;">*
+                                            &nbsp;</span></label>
+                                            <input type="file"  class="form-control" (change)="onFileSelected3($event)"  
+                                            name="hawiye" accept="application/pdf"
+                                             required>  
+                                        
+
+
                                     </div>
-                                </div> -->
+                                </div>
 
-                                
-                                
 
+
+                        
                             </div>
 
 
@@ -271,17 +275,16 @@
                 
                               </div>
                          
-
-
-
-
-
-
-
-                          
-
+                        
 
                         </form>
+
+
+                        <div *ngFor="let file of uploadedFiles">
+                            <img [src]="file.content" [alt]="file.name" style="max-width: 100px; max-height: 100px;">
+                            <button class="btn btn-danger" (click)="deleteFile(file)">Delete</button>
+                          </div>
+                  
 
 
 

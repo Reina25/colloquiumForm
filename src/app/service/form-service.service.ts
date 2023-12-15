@@ -67,7 +67,7 @@ export class FormServiceService {
     studentEmail: string,
     studentPlaceBirth: string,
     studentDateBirth: string,
-    personalPhoto: File, 
+    personalPhoto: string, 
     completePhone: string
   }) {
 
