@@ -33,7 +33,7 @@ export class CFormComponent implements OnInit {
   q7: string = "صورة شمسية";
   q8: string = "هوية";
   q9: string = "إخراج قيد";
-  q10: string = "شهادة مصادقة";
+  q10: string = "شهادة مصدقة ";
   q11: string = "ثانوية عامة أو ما يعادلها مصدقة";
   q12: string = "ملف تدريب مصدق من وزارة الصحة (طب وتغذية)";
   q13: string = "معادلة (طب)"
@@ -77,21 +77,17 @@ export class CFormComponent implements OnInit {
 
 
 
-  // personal photo
+
+
+
+
+
+
+
+  //////////////// personal photo
   selectedFile1: UploadedFile | undefined;
 
-
-  // hawiye
-  selectedFile2: UploadedFile | undefined;
-
-
   @ViewChild('fileInput1') fileInput1!: ElementRef;
-
-  @ViewChild('fileInput2') fileInput2!: ElementRef;
-
-
-
-
 
   onFileSelected1(event: any) {
     const file: File = event.target.files[0];
@@ -123,7 +119,11 @@ export class CFormComponent implements OnInit {
   }
 
 
-  
+
+    ////////////// hawiye
+    selectedFile2: UploadedFile | undefined;
+
+    @ViewChild('fileInput2') fileInput2!: ElementRef;
 
   onFileSelected2(event: any) {
     const file: File = event.target.files[0];
@@ -151,6 +151,175 @@ export class CFormComponent implements OnInit {
     this.fileInput2.nativeElement.value = '';
 
   }
+
+
+
+   ////////////// 25raj 2eed
+   selectedFile3: UploadedFile | undefined;
+
+   @ViewChild('fileInput3') fileInput3!: ElementRef;
+
+ onFileSelected3(event: any) {
+   const file: File = event.target.files[0];
+   if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+     const reader = new FileReader();
+     reader.onload = () => {
+       const uploadedFile: UploadedFile = {
+         name: file.name,
+         content: reader.result as string 
+       };
+       this.selectedFile3 = uploadedFile;
+       localStorage.setItem('selectedFile3', JSON.stringify(this.selectedFile3));
+
+     };
+     reader.readAsDataURL(file);
+   }
+ }
+
+ deleteFile3() {
+   localStorage.setItem('selectedFile3', null);
+   const storedFile3 = localStorage.getItem('selectedFile3');
+   if (storedFile3) {
+     this.selectedFile3 = JSON.parse(storedFile3);
+   }
+   this.fileInput3.nativeElement.value = '';
+
+ }
+
+
+
+  ////////////// certificate
+  selectedFile4: UploadedFile | undefined;
+
+  @ViewChild('fileInput4') fileInput4!: ElementRef;
+
+onFileSelected4(event: any) {
+  const file: File = event.target.files[0];
+  if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const uploadedFile: UploadedFile = {
+        name: file.name,
+        content: reader.result as string 
+      };
+      this.selectedFile4 = uploadedFile;
+      localStorage.setItem('selectedFile4', JSON.stringify(this.selectedFile4));
+
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+deleteFile4() {
+  localStorage.setItem('selectedFile4', null);
+  const storedFile4 = localStorage.getItem('selectedFile4');
+  if (storedFile4) {
+    this.selectedFile4 = JSON.parse(storedFile4);
+  }
+  this.fileInput4.nativeElement.value = '';
+
+}
+
+
+ ////////////// grade12
+ selectedFile5: UploadedFile | undefined;
+
+ @ViewChild('fileInput5') fileInput5!: ElementRef;
+
+onFileSelected5(event: any) {
+ const file: File = event.target.files[0];
+ if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+   const reader = new FileReader();
+   reader.onload = () => {
+     const uploadedFile: UploadedFile = {
+       name: file.name,
+       content: reader.result as string 
+     };
+     this.selectedFile5 = uploadedFile;
+     localStorage.setItem('selectedFile5', JSON.stringify(this.selectedFile5));
+
+   };
+   reader.readAsDataURL(file);
+ }
+}
+
+deleteFile5() {
+ localStorage.setItem('selectedFile5', null);
+ const storedFile5 = localStorage.getItem('selectedFile5');
+ if (storedFile5) {
+   this.selectedFile5 = JSON.parse(storedFile5);
+ }
+ this.fileInput5.nativeElement.value = '';
+
+}
+
+
+
+ ////////////// training
+ selectedFile6: UploadedFile | undefined;
+
+ @ViewChild('fileInput6') fileInput6!: ElementRef;
+
+onFileSelected6(event: any) {
+ const file: File = event.target.files[0];
+ if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+   const reader = new FileReader();
+   reader.onload = () => {
+     const uploadedFile: UploadedFile = {
+       name: file.name,
+       content: reader.result as string 
+     };
+     this.selectedFile6 = uploadedFile;
+     localStorage.setItem('selectedFile6', JSON.stringify(this.selectedFile6));
+
+   };
+   reader.readAsDataURL(file);
+ }
+}
+
+deleteFile6() {
+ localStorage.setItem('selectedFile6', null);
+ const storedFile6 = localStorage.getItem('selectedFile6');
+ if (storedFile6) {
+   this.selectedFile6 = JSON.parse(storedFile6);
+ }
+ this.fileInput6.nativeElement.value = '';
+
+}
+
+
+
+ ////////////// mo3adale
+ selectedFile7: UploadedFile | undefined;
+
+ @ViewChild('fileInput7') fileInput7!: ElementRef;
+
+onFileSelected7(event: any) {
+ const file: File = event.target.files[0];
+ if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+   const reader = new FileReader();
+   reader.onload = () => {
+     const uploadedFile: UploadedFile = {
+       name: file.name,
+       content: reader.result as string 
+     };
+     this.selectedFile7 = uploadedFile;
+     localStorage.setItem('selectedFile7', JSON.stringify(this.selectedFile7));
+
+   };
+   reader.readAsDataURL(file);
+ }
+}
+
+deleteFile7() {
+ localStorage.setItem('selectedFile7', null);
+ const storedFile7 = localStorage.getItem('selectedFile7');
+ if (storedFile7) {
+   this.selectedFile7 = JSON.parse(storedFile7);
+ }
+ this.fileInput7.nativeElement.value = '';
+
+}
 
 
 
@@ -239,6 +408,32 @@ ngOnInit() {
     this.selectedFile2 = JSON.parse(storedFile2);
   }
 
+  const storedFile3 = localStorage.getItem('selectedFile3');
+  if (storedFile3) {
+    this.selectedFile3 = JSON.parse(storedFile3);
+  }
+
+  const storedFile4 = localStorage.getItem('selectedFile4');
+  if (storedFile4) {
+    this.selectedFile4 = JSON.parse(storedFile4);
+  }
+
+  const storedFile5 = localStorage.getItem('selectedFile5');
+  if (storedFile5) {
+    this.selectedFile5 = JSON.parse(storedFile5);
+  }
+
+  const storedFile6 = localStorage.getItem('selectedFile6');
+  if (storedFile6) {
+    this.selectedFile6 = JSON.parse(storedFile6);
+  }
+
+  const storedFile7 = localStorage.getItem('selectedFile7');
+  if (storedFile7) {
+    this.selectedFile7 = JSON.parse(storedFile7);
+  }
+
+
 
 
 
@@ -300,8 +495,10 @@ saveSelection6(newValue: string) {
     studentEmail: string,
     studentPlaceBirth: string,
     studentDateBirth: string,
-    personalPhoto: string,
     completePhone: string, 
+    personalPhoto: string,
+    hawiye: string,
+
   }){
     this.submitted = true;
    

@@ -42,7 +42,7 @@
                             <div class="row">
 
                                 <div [class.d-none]="!noshow">
-                                    <div id="student complete phone" class="col-6 pe-3">
+                                    <!-- <div id="student complete phone" class="col-6 pe-3">
                                         <div class="form-group">
 
                                             <input type="text" name="completePhone" #completePhone="ngModel"
@@ -50,7 +50,7 @@
                                                 ngModel required>
 
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div id="personal photo" class="col-6 pe-3">
                                         <div class="form-group">
@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
 
-                                    <div id="personal photo" class="col-6 pe-3">
+                                    <div id="hawiye" class="col-6 pe-3">
                                         <div class="form-group">
 
                                             <input type="text" name="hawiye" #hawiye="ngModel" class="form-control"
@@ -70,7 +70,52 @@
                                         </div>
                                     </div>
 
-                                 
+                                    <div id="25raj 2eed" class="col-6 pe-3">
+                                        <div class="form-group">
+
+                                            <input type="text" name="25raj 2eed" #25raj="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile3" required>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="certificate" class="col-6 pe-3">
+                                        <div class="form-group">
+
+                                            <input type="text" name="certificate" #certificate="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile4" required>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="grade12" class="col-6 pe-3">
+                                        <div class="form-group">
+
+                                            <input type="text" name="grade12" #grade12="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile5" required>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="training" class="col-6 pe-3">
+                                        <div class="form-group">
+
+                                            <input type="text" name="training" #training="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile6" required>
+
+                                        </div>
+                                    </div>
+
+                                    <div id="mo3adale" class="col-6 pe-3">
+                                        <div class="form-group">
+
+                                            <input type="text" name="mo3adale" #mo3adale="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile7" required>
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
 
@@ -145,7 +190,7 @@
                                           </div>
                                     </div>
                                 </div> -->
-                                <div id="question extra student country code" class="col-2 pe-3">
+                                <!-- <div id="question extra student country code" class="col-2 pe-3">
                                     <div class="form-group">
                                         <label>الرقم الدولي<span style="color: #ff0000; font-size: large;">*
                                                 &nbsp;</span></label>
@@ -165,10 +210,10 @@
 
 
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                                <div id="question 3 student phone number" class="col-4 pe-3">
+                                <div id="question 3 student phone number" class="col-6 pe-3">
                                     <div class="form-group">
                                         <label>{{q3}}<span style="color: #ff0000; font-size: large;">*
                                                 &nbsp;</span></label>
@@ -250,104 +295,190 @@
 
                             <div class="row">
 
-                                <div id="question 7 upload jpg personal photo" class="col-6 pe-3">
-                                    
-                                        
-                                            <div class="mb-3 form-group">
-                                                <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
-                                                        &nbsp;</span></label>
-                                                <input type="file" #fileInput1 class="form-control"
-                                                    (change)="onFileSelected1($event)" name="personalPhoto"
-                                                    accept="image/jpeg" required>
-    
-    
-    
-                                            </div>
-                                            <div *ngIf="selectedFile1">
-                                                <img [src]="selectedFile1.content" [alt]="selectedFile1.name"
-                                                    style="max-width: 100px; max-height: 100px;">
-                                                <button class="btn btn-danger" (click)="deleteFile1()">Delete</button>
-                                            </div>
-                                        
-    
-                                       
-    
-    
-                                       
-    
-    
-                                    
-                                </div>
+                                <div id="question 7 upload jpg personal photo" class="col-6 pe-3 pb-3">
 
-                                <div id="question 8 upload hawiye" class="col-6 ps-3">
-                                    
-                                        
-                                            <div class="mb-3 form-group">
-                                                <label>{{q8}}<span style="color: #ff0000; font-size: large;">*
-                                                        &nbsp;</span></label>
-                                                <input type="file" #fileInput2 class="form-control"
-                                                    (change)="onFileSelected2($event)" name="hawiye" accept="image/jpeg, application/pdf"
-                                                    required>
-        
-        
-        
-                                            </div>
-                                            <div *ngIf="selectedFile2">
-                                                <img [src]="selectedFile2.content" [alt]="selectedFile2.name"
-                                                    style="max-width: 100px; max-height: 100px;">
-                                                <button class="btn btn-danger" (click)="deleteFile2()">Delete</button>
-                                            </div>
-            
-                                    
-    
-                                        
-                                    
-                                      
-        
-                                    
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput1 class="form-control"
+                                            (change)="onFileSelected1($event)" name="personalPhoto" accept="image/jpeg"
+                                            required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile1">
+                                        <img [src]="selectedFile1.content" [alt]="selectedFile1.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile1()">Delete</button>
+                                    </div>
                                 </div>
 
 
+                                <div id="question 8 upload hawiye" class="col-6 ps-3 pb-3">
 
-                              
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q8}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput2 class="form-control"
+                                            (change)="onFileSelected2($event)" name="hawiye"
+                                            accept="image/jpeg, application/pdf" required>
 
 
-                   
+
+                                    </div>
+                                    <div *ngIf="selectedFile2">
+                                        <img [src]="selectedFile2.content" [alt]="selectedFile2.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile2()">Delete</button>
+                                    </div>
+                                </div>
+
+                                <div id="question 9 upload 25raj 2eed" class="col-6 pe-3 pb-3">
+
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q9}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput3 class="form-control"
+                                            (change)="onFileSelected3($event)" name="25raj 2eed"
+                                            accept="image/jpeg, application/pdf" required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile3">
+                                        <img [src]="selectedFile3.content" [alt]="selectedFile3.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile3()">Delete</button>
+                                    </div>
+                                </div>
+
+                                <div id="question 10 upload certificate" class="col-6 ps-3 pb-3">
+
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q10}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput4 class="form-control"
+                                            (change)="onFileSelected4($event)" name="25raj 2eed"
+                                            accept="image/jpeg, application/pdf" required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile4">
+                                        <img [src]="selectedFile4.content" [alt]="selectedFile4.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile4()">Delete</button>
+                                    </div>
+                                </div>
+
+
+                                <div id="question 11 upload grade12" class="col-6 pe-3 pb-3">
+
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q11}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput5 class="form-control"
+                                            (change)="onFileSelected5($event)" name="grade12"
+                                            accept="image/jpeg, application/pdf" required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile5">
+                                        <img [src]="selectedFile5.content" [alt]="selectedFile5.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile5()">Delete</button>
+                                    </div>
+                                </div>
+
+
+                                <div id="question 12 upload training" class="col-6 ps-3 pb-3">
+
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q12}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput6 class="form-control"
+                                            (change)="onFileSelected6($event)" name="training"
+                                            accept="image/jpeg, application/pdf" required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile6">
+                                        <img [src]="selectedFile6.content" [alt]="selectedFile6.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile6()">Delete</button>
+                                    </div>
+                                </div>
+
+
+                                <div id="question 13 upload mo3adale" class="col-6 pe-3 pb-3">
+
+
+                                    <div class="mb-3 form-group">
+                                        <label>{{q13}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="file" #fileInput7 class="form-control"
+                                            (change)="onFileSelected7($event)" name="mo3adale"
+                                            accept="image/jpeg, application/pdf" required>
+
+
+
+                                    </div>
+                                    <div *ngIf="selectedFile7">
+                                        <img [src]="selectedFile7.content" [alt]="selectedFile7.name"
+                                            style="max-width: 100px; max-height: 100px;">
+                                        <button class="btn btn-danger" (click)="deleteFile7()">Delete</button>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
 
 
 
                             </div>
 
-                          
-                
-                <div class="row">
 
-                    <div class=" col-3 py-3">
-                        <button *ngIf="cForm.form.invalid" [disabled]="cForm.form.invalid" class="btn btn-danger"
-                            type="submit">Missing Fields</button>
-                        <button [class.d-none]="cForm.form.invalid" [disabled]="cForm.form.invalid"
-                            class="btn btn-success" type="submit">Submit</button>
+
+                            <div class="row">
+
+                                <div class=" col-3 py-3">
+                                    <button *ngIf="cForm.form.invalid" [disabled]="cForm.form.invalid"
+                                        class="btn btn-danger" type="submit">Missing Fields</button>
+                                    <button [class.d-none]="cForm.form.invalid" [disabled]="cForm.form.invalid"
+                                        class="btn btn-success" type="submit">Submit</button>
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </form>
+
+
+
+
+
+
 
                     </div>
 
-
-
                 </div>
 
-
-
-                </form>
-
-
-
-
-
-
-
             </div>
-
         </div>
-
-    </div>
-</div>
-
