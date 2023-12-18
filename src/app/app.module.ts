@@ -11,6 +11,7 @@ import { CheckInfoComponent } from './check-info/check-info.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormSubmittedComponent } from './form-submitted/form-submitted.component';
 import { FormsModule } from '@angular/forms';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     CFormComponent,
     CheckInfoComponent,
     PageNotFoundComponent,
-    FormSubmittedComponent
+    FormSubmittedComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

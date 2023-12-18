@@ -27,7 +27,7 @@
                     <div [class.d-none]="submitted" id="form" class="form-area col-12 px-5  py-3">
                         {{cForm.value | json}}
 
-                        
+
 
 
 
@@ -41,39 +41,39 @@
 
                             <div class="row">
 
-                                <div [class.d-none]="!noshow" >
+                                <div [class.d-none]="!noshow">
                                     <div id="student complete phone" class="col-6 pe-3">
                                         <div class="form-group">
-                                           
+
                                             <input type="text" name="completePhone" #completePhone="ngModel"
                                                 class="form-control" [(ngModel)]="selectedOptionExtra + selectedOption3"
-                                                 ngModel required>
-                                            
+                                                ngModel required>
+
                                         </div>
                                     </div>
-    
+
                                     <div id="personal photo" class="col-6 pe-3">
                                         <div class="form-group">
-                                           
+
                                             <input type="text" name="personalPhoto" #personalPhoto="ngModel"
-                                                class="form-control" [(ngModel)]="selectedFile1"
-                                                 required>
-                                            
+                                                class="form-control" [(ngModel)]="selectedFile1" required>
+
                                         </div>
                                     </div>
 
-                                    <div id="hawiye" class="col-6 pe-3">
+                                    <div id="personal photo" class="col-6 pe-3">
                                         <div class="form-group">
-                                           
-                                            <input type="text" name="hawiye" #hawiye="ngModel"
-                                                class="form-control" [(ngModel)]="selectedFile2"
-                                                 required>
-                                            
+
+                                            <input type="text" name="hawiye" #hawiye="ngModel" class="form-control"
+                                                [(ngModel)]="selectedFile2" required>
+
                                         </div>
                                     </div>
+
+                                 
                                 </div>
 
-                               
+
 
 
                                 <div id="question 1 student name" class="col-6 pe-3">
@@ -85,11 +85,12 @@
                                             class="form-control" [(ngModel)]="selectedOption1"
                                             (ngModelChange)="saveSelection1($event)" required>
                                         <small class="text-danger"
-                                            [class.d-none]="studentName.untouched || studentName.valid">Name is required</small>
+                                            [class.d-none]="studentName.untouched || studentName.valid">Name is
+                                            required</small>
                                     </div>
                                 </div>
 
-                              
+
 
 
 
@@ -99,10 +100,10 @@
                                             &nbsp;</span></label>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Male"
-                                            #radios1="ngModel" [class.is-invalid]="radios1.invalid && radios1.touched"
-                                            required [(ngModel)]="selectedOption2"
-                                            (ngModelChange)="saveSelection2($event)">
+                                        <input class="form-check-input" type="radio" name="Gender" id="male"
+                                            value="Male" #radios1="ngModel"
+                                            [class.is-invalid]="radios1.invalid && radios1.touched" required
+                                            [(ngModel)]="selectedOption2" (ngModelChange)="saveSelection2($event)">
                                         <label class="form-check-label" for="male">
                                             Male
                                         </label>
@@ -120,7 +121,8 @@
 
                                     <div class=" pb-3">
                                         <small class="text-danger "
-                                            [class.d-none]="radios1.valid || radios1.untouched">Gender is required</small>
+                                            [class.d-none]="radios1.valid || radios1.untouched">Gender is
+                                            required</small>
 
                                     </div>
                                 </div>
@@ -150,16 +152,21 @@
                                         <input type="tel" name="CountryCode" #studentPhoneCode="ngModel"
                                             [class.is-invalid]="studentPhoneCode.invalid && studentPhoneCode.touched"
                                             class="form-control" [(ngModel)]="selectedOptionExtra"
-                                            (ngModelChange)="saveSelectionExtra($event)" pattern="^(\+?\d{1,3}|\d{1,4})$" required>
-                                            <div *ngIf="studentPhoneCode.touched && (studentPhoneCode.invalid || studentPhoneCode.errors)">
-                                                <small class="text-danger" *ngIf="studentPhoneCode.errors['required']">Country code number is required</small>
-                                                <small class="text-danger" *ngIf="studentPhoneCode.errors['pattern']">Enter a valid country code number </small>
-                                          </div>
-                                                
-                                         
+                                            (ngModelChange)="saveSelectionExtra($event)"
+                                            pattern="^(\+?\d{1,3}|\d{1,4})$" required>
+                                        <div
+                                            *ngIf="studentPhoneCode.touched && (studentPhoneCode.invalid || studentPhoneCode.errors)">
+                                            <small class="text-danger"
+                                                *ngIf="studentPhoneCode.errors['required']">Country code number is
+                                                required</small>
+                                            <small class="text-danger" *ngIf="studentPhoneCode.errors['pattern']">Enter
+                                                a valid country code number </small>
+                                        </div>
+
+
                                     </div>
                                 </div>
-                               
+
 
                                 <div id="question 3 student phone number" class="col-4 pe-3">
                                     <div class="form-group">
@@ -168,13 +175,17 @@
                                         <input type="tel" name="PhoneNumber" #studentPhone="ngModel"
                                             [class.is-invalid]="studentPhone.invalid && studentPhone.touched"
                                             class="form-control" [(ngModel)]="selectedOption3"
-                                            (ngModelChange)="saveSelection3($event)" placeholder="Enter Phone number wih NO spaces" pattern="^\d{8}$" required>
-                                            <div *ngIf="studentPhone.touched && (studentPhone.invalid || studentPhone.errors)">
-                                                <small class="text-danger" *ngIf="studentPhone.errors['required']">Phone number is required</small>
-                                                <small class="text-danger" *ngIf="studentPhone.errors['pattern']">Phone number must be 8 digits</small>
-                                          </div>
-                                                
-                                         
+                                            (ngModelChange)="saveSelection3($event)"
+                                            placeholder="Enter Phone number wih NO spaces" pattern="^\d{8}$" required>
+                                        <div
+                                            *ngIf="studentPhone.touched && (studentPhone.invalid || studentPhone.errors)">
+                                            <small class="text-danger" *ngIf="studentPhone.errors['required']">Phone
+                                                number is required</small>
+                                            <small class="text-danger" *ngIf="studentPhone.errors['pattern']">Phone
+                                                number must be 8 digits</small>
+                                        </div>
+
+
                                     </div>
                                 </div>
 
@@ -185,18 +196,23 @@
                                         <input type="text" name="EmailAddress" #studentEmail="ngModel"
                                             [class.is-invalid]="studentEmail.invalid && studentEmail.touched"
                                             class="form-control" [(ngModel)]="selectedOption4"
-                                            (ngModelChange)="saveSelection4($event)" pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$" required>
-                                            <div *ngIf="studentEmail.touched && (studentEmail.invalid || studentEmail.errors)">
-                                                <small class="text-danger" *ngIf="studentEmail.errors['required']">Email address is required</small>
-                                                <small class="text-danger" *ngIf="studentEmail.errors['pattern']">Please enter a valid email address</small>
-                                          </div>
-                                                
-                                         
+                                            (ngModelChange)="saveSelection4($event)"
+                                            pattern="^([\w\-\.]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+\.)+)([a-zA-Z]{2,4}))$"
+                                            required>
+                                        <div
+                                            *ngIf="studentEmail.touched && (studentEmail.invalid || studentEmail.errors)">
+                                            <small class="text-danger" *ngIf="studentEmail.errors['required']">Email
+                                                address is required</small>
+                                            <small class="text-danger" *ngIf="studentEmail.errors['pattern']">Please
+                                                enter a valid email address</small>
+                                        </div>
+
+
                                     </div>
                                 </div>
 
-                            
-                        
+
+
 
                                 <div id="question 5 student place of birth" class="col-6 pe-3">
                                     <div class="form-group">
@@ -207,7 +223,8 @@
                                             class="form-control" [(ngModel)]="selectedOption5"
                                             (ngModelChange)="saveSelection5($event)" required>
                                         <small class="text-danger"
-                                            [class.d-none]="studentPlaceBirth.untouched || studentPlaceBirth.valid">Place of birth is required</small>
+                                            [class.d-none]="studentPlaceBirth.untouched || studentPlaceBirth.valid">Place
+                                            of birth is required</small>
                                     </div>
                                 </div>
 
@@ -215,85 +232,122 @@
                                     <div class="form-group">
                                         <label>{{q6}}<span style="color: #ff0000; font-size: large;">*
                                                 &nbsp;</span></label>
-                                        <input type="text" name="DateofBirth" #studentDateBirth="ngModel"  placeholder="dd/mm/yyyy"  
-                                       
+                                        <input type="text" name="DateofBirth" #studentDateBirth="ngModel"
+                                            placeholder="dd/mm/yyyy"
                                             [class.is-invalid]="studentDateBirth.invalid && studentDateBirth.touched"
                                             class="form-control" [(ngModel)]="selectedOption6"
                                             (ngModelChange)="saveSelection6($event)" required>
                                         <small class="text-danger"
-                                            [class.d-none]="studentDateBirth.untouched || studentDateBirth.valid">Date of birth is required</small>
+                                            [class.d-none]="studentDateBirth.untouched || studentDateBirth.valid">Date
+                                            of birth is required</small>
                                     </div>
                                 </div>
                             </div>
 
                             <h5 class="text-primary " id="sections">Section 2 - Required Documents</h5>
 
+
+
                             <div class="row">
+
                                 <div id="question 7 upload jpg personal photo" class="col-6 pe-3">
-                                    <div class="mb-3 form-group">
-                                        <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
-                                            &nbsp;</span></label>
-                                            <input type="file"  class="form-control" (change)="onFileSelected2($event)"  
-                                            name="personalPhoto" accept="image/jpeg"
-                                             required>  
+                                    
                                         
-
-
-                                    </div>
+                                            <div class="mb-3 form-group">
+                                                <label>{{q7}}<span style="color: #ff0000; font-size: large;">*
+                                                        &nbsp;</span></label>
+                                                <input type="file" #fileInput1 class="form-control"
+                                                    (change)="onFileSelected1($event)" name="personalPhoto"
+                                                    accept="image/jpeg" required>
+    
+    
+    
+                                            </div>
+                                            <div *ngIf="selectedFile1">
+                                                <img [src]="selectedFile1.content" [alt]="selectedFile1.name"
+                                                    style="max-width: 100px; max-height: 100px;">
+                                                <button class="btn btn-danger" (click)="deleteFile1()">Delete</button>
+                                            </div>
+                                        
+    
+                                       
+    
+    
+                                       
+    
+    
+                                    
                                 </div>
 
-                                <div id="question 8 upload pdf hawiye" class="col-6 ps-3">
-                                    <div class="mb-3 form-group">
-                                        <label>{{q8}}<span style="color: #ff0000; font-size: large;">*
-                                            &nbsp;</span></label>
-                                            <input type="file"  class="form-control" (change)="onFileSelected3($event)"  
-                                            name="hawiye" accept="application/pdf"
-                                             required>  
+                                <div id="question 8 upload hawiye" class="col-6 ps-3">
+                                    
                                         
-
-
-                                    </div>
+                                            <div class="mb-3 form-group">
+                                                <label>{{q8}}<span style="color: #ff0000; font-size: large;">*
+                                                        &nbsp;</span></label>
+                                                <input type="file" #fileInput2 class="form-control"
+                                                    (change)="onFileSelected2($event)" name="hawiye" accept="image/jpeg, application/pdf"
+                                                    required>
+        
+        
+        
+                                            </div>
+                                            <div *ngIf="selectedFile2">
+                                                <img [src]="selectedFile2.content" [alt]="selectedFile2.name"
+                                                    style="max-width: 100px; max-height: 100px;">
+                                                <button class="btn btn-danger" (click)="deleteFile2()">Delete</button>
+                                            </div>
+            
+                                    
+    
+                                        
+                                    
+                                      
+        
+                                    
                                 </div>
 
 
 
-                        
+                              
+
+
+                   
+
+
+
                             </div>
 
-
-                            <div class="row">
-                                
-                                <div class=" col-3 py-3">
-                                  <button *ngIf="cForm.form.invalid" [disabled]="cForm.form.invalid" class="btn btn-danger"
-                                    type="submit">Missing Fields</button>
-                                  <button [class.d-none]="cForm.form.invalid" [disabled]="cForm.form.invalid"
-                                    class="btn btn-success" type="submit">Submit</button>
+                          
                 
-                                </div>
-                
-                
-                
-                              </div>
-                         
-                        
+                <div class="row">
 
-                        </form>
-
-
-                        <div *ngFor="let file of uploadedFiles">
-                            <img [src]="file.content" [alt]="file.name" style="max-width: 100px; max-height: 100px;">
-                            <button class="btn btn-danger" (click)="deleteFile(file)">Delete</button>
-                          </div>
-                  
-
-
+                    <div class=" col-3 py-3">
+                        <button *ngIf="cForm.form.invalid" [disabled]="cForm.form.invalid" class="btn btn-danger"
+                            type="submit">Missing Fields</button>
+                        <button [class.d-none]="cForm.form.invalid" [disabled]="cForm.form.invalid"
+                            class="btn btn-success" type="submit">Submit</button>
 
                     </div>
 
+
+
                 </div>
 
-            </div>
-        </div>
-    </div>
 
+
+                </form>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
 </div>
+

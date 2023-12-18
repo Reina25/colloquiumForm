@@ -15,6 +15,7 @@ export class CFormComponent implements OnInit {
 
   constructor(private formService: FormServiceService, private http: HttpClient){}
 
+
   studentFirstName:any;
 
   submitted:boolean=false;
@@ -68,35 +69,42 @@ export class CFormComponent implements OnInit {
   selectedOption6: any 
   savedOption6: any;
 
-  // personal photo
 
   
   noshow: boolean = false;
 
-  
-  uploadedFiles: UploadedFile[] = [];
 
 
 
 
-  selectedFile1: any | undefined;
+  // personal photo
+  selectedFile1: UploadedFile | undefined;
 
-  selectedFile2: any | undefined;
+
+  // hawiye
+  selectedFile2: UploadedFile | undefined;
 
 
-  onFileSelected2(event: any) {
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+
+  @ViewChild('fileInput2') fileInput2!: ElementRef;
+
+
+
+
+
+  onFileSelected1(event: any) {
     const file: File = event.target.files[0];
     if (file && file.type === 'image/jpeg') {
       const reader = new FileReader();
       reader.onload = () => {
         const uploadedFile: UploadedFile = {
           name: file.name,
-          content: reader.result as string // Assuming you want base64 representation
+          content: reader.result as string 
         };
-        this.uploadedFiles.push(uploadedFile);
+     
         this.selectedFile1 = uploadedFile;
-        // Save to localStorage or sessionStorage
-        localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
+  
         localStorage.setItem('selectedFile1', JSON.stringify(this.selectedFile1));
 
       };
@@ -104,20 +112,29 @@ export class CFormComponent implements OnInit {
     }
   }
 
+  deleteFile1() {
+    localStorage.setItem('selectedFile1', null);
+    const storedFile1 = localStorage.getItem('selectedFile1');
+    if (storedFile1) {
+      this.selectedFile1 = JSON.parse(storedFile1);
+    }
+    this.fileInput1.nativeElement.value = '';
 
-  onFileSelected3(event: any) {
+  }
+
+
+  
+
+  onFileSelected2(event: any) {
     const file: File = event.target.files[0];
-    if (file && file.type === 'application/pdf') {
+    if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
       const reader = new FileReader();
       reader.onload = () => {
         const uploadedFile: UploadedFile = {
           name: file.name,
-          content: reader.result as string // Assuming you want base64 representation
+          content: reader.result as string 
         };
-        this.uploadedFiles.push(uploadedFile);
         this.selectedFile2 = uploadedFile;
-        // Save to localStorage or sessionStorage
-        localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
         localStorage.setItem('selectedFile2', JSON.stringify(this.selectedFile2));
 
       };
@@ -125,32 +142,17 @@ export class CFormComponent implements OnInit {
     }
   }
 
-  deleteFile(file: UploadedFile) {
-    this.uploadedFiles = this.uploadedFiles.filter(f => f !== file);
-    localStorage.setItem('uploadedFiles', JSON.stringify(this.uploadedFiles));
-    localStorage.setItem('selectedFile1', null);
-    const storedFile1 = localStorage.getItem('selectedFile1');
-    if (storedFile1) {
-      this.selectedFile1 = JSON.parse(storedFile1);
+  deleteFile2() {
+    localStorage.setItem('selectedFile2', null);
+    const storedFile2 = localStorage.getItem('selectedFile2');
+    if (storedFile2) {
+      this.selectedFile2 = JSON.parse(storedFile2);
     }
-
-
+    this.fileInput2.nativeElement.value = '';
 
   }
 
-  // onFileSelected1(event: any) {
-  //   this.selectedFile1 = event.target.files[0];
-  //   if (this.selectedFile1) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       const imageContent = reader.result ;
-  //       this.selectedFile1 = imageContent;
 
-  //     };
-  //     reader.readAsDataURL(this.selectedFile1);
-     
-  //   }
-  // }
 
 
 
@@ -222,10 +224,10 @@ ngOnInit() {
    
   }
 
-  const storedFiles = localStorage.getItem('uploadedFiles');
-  if (storedFiles) {
-    this.uploadedFiles = JSON.parse(storedFiles);
-  }
+  // const storedFiles = localStorage.getItem('uploadedFiles');
+  // if (storedFiles) {
+  //   this.uploadedFiles = JSON.parse(storedFiles);
+  // }
 
   const storedFile1 = localStorage.getItem('selectedFile1');
   if (storedFile1) {
@@ -236,6 +238,7 @@ ngOnInit() {
   if (storedFile2) {
     this.selectedFile2 = JSON.parse(storedFile2);
   }
+
 
 
 
@@ -288,7 +291,7 @@ saveSelection6(newValue: string) {
 
 
 
-// submit student response and redirect to iConnect once done
+  // submit student response and redirect to iConnect once done
   onSubmit(User: {
      studentName: string,
     radios1: string,
