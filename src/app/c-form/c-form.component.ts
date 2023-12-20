@@ -15,28 +15,34 @@ export class CFormComponent implements OnInit {
 
   constructor(private formService: FormServiceService, private http: HttpClient){}
 
-
-  studentFirstName:any;
-
   submitted:boolean=false;
 
   response: formResponse;
 
-  
-  q1: string = "اسم الطالب الكامل";
-  q2: string = "الجنس";
-  q3: string = "رقم الهاتف";
-  q4: string = "البريد الالكتروني الخاص بالجامعة ";
-  q5: string = "مكان الولادة";
-  q6: string = "تاريخ الولادة";
+  q1 = "رقم الطالب";
+  q2 = "إسم الطالب";
+  q3 = "إسم الأب";
+  q4 = "الشهرة";
+  q5 = "First Name";
+  q6 = "Father's Name";
+  q7 = "Last Name";
+  q8 = "الجنسية"
+  q9 = "تاريخ الولادة";
+  q10 = "مكان الولادة";
+  q11 = "الجنس";
+  q12 = "الإختصاص";
+  q13 = "رقم الهاتف";
+  q14 = "البريد الالكتروني الخاص بالجامعة ";
+  q15 = "رقم جواز سفر"; //optional
 
-  q7: string = "صورة شمسية";
-  q8: string = "هوية";
-  q9: string = "إخراج قيد";
-  q10: string = "شهادة مصدقة ";
-  q11: string = "ثانوية عامة أو ما يعادلها مصدقة";
-  q12: string = "ملف تدريب مصدق من وزارة الصحة (طب وتغذية)";
-  q13: string = "معادلة (طب)"
+  q16 = "صورة شمسية";
+  q17 = "هوية أو إخراج قيد(جديد) أو جواز سفر صالح";
+  q18 = "شهادة مصدقة ";
+  q19 = "ثانوية عامة أو ما يعادلها مصدقة";
+  q20 = "ملف تدريب مصدق من وزارة الصحة (طب وتغذيةوعلم نفس)"; //optional
+  q21 = "معادلة (طب وتغذيةوعلم نفس)";
+  q22 = "(wish)إيصال من وزارة المالي"; //optional
+
 
 
   
