@@ -55,7 +55,6 @@ export class CheckInfoComponent implements OnInit {
       }, 1000); 
 
 
-
     } else {
       this.router.navigate(['/pagenotfound']);
     }
