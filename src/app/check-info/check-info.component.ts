@@ -48,12 +48,13 @@ export class CheckInfoComponent implements OnInit {
     if (this.formService.getHash() == this.hash2) {
 
 
-      if (this.formService.getStudentID() == '321') {
-        this.router.navigate(['/formsubmitted']);
+      this.formService.fetchStudentData();
 
-      } else {
+      setTimeout(() => {
         this.router.navigate(['/ColloquiumForm']);
-      }
+      }, 1000); 
+
+
 
     } else {
       this.router.navigate(['/pagenotfound']);

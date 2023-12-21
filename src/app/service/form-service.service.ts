@@ -11,6 +11,10 @@ export class FormServiceService {
   studentID: string;
 
   hash: any;
+  
+  fullName: any;
+
+  private studentData: any = {}; 
 
 
 
@@ -39,6 +43,27 @@ export class FormServiceService {
     return this.hash;
   }
 
+
+  
+  setStudentName(studentName: string) {
+    this.fullName = studentName;
+    return studentName;
+  }
+
+  getStudentName() {
+    return this.fullName;
+  }
+
+    saveStudentName() {
+    return localStorage.setItem('studentName', this.getStudentName());
+  }
+
+  getSavedStudentName() {
+    return localStorage.getItem('studentName')
+  }
+
+  
+
   // save and get saved student ID and hash
 
   saveStudentID() {
@@ -55,6 +80,37 @@ export class FormServiceService {
 
   getSavedHash() {
     return localStorage.getItem('hash')
+  }
+
+
+  fetchStudentData() {
+    this.http.get<any>(
+      'http://172.30.2.8:121/api/Student/'+ this.getStudentID()
+    )
+      .subscribe((response) => {
+       
+        const student = response[0]; 
+
+     
+        this.studentData.fullName = student.arabicFullName;
+        this.studentData.faculty = student.faculty;
+        this.studentData.campus = student.campus;
+        this.studentData.program = student.program;
+
+   
+
+        this.fullName = this.setStudentName(this.studentData.fullName);
+        this.fullName = this.saveStudentName();
+
+        // this.faculty = this.setFaculty(this.studentData.faculty);
+        // this.faculty = this.saveFaculty();
+
+        // this.campus = this.setCampus(this.studentData.campus);
+        // this.campus = this.saveCampus();
+
+
+
+      });
   }
 
 

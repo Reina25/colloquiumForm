@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { formResponse } from '../model/formResponse';
 import { UploadedFile } from '../model/uploadedFile';
+import { studentData } from '../model/studentData';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class CFormComponent implements OnInit {
   submitted:boolean=false;
 
   response: formResponse;
+
+  student: studentData;
 
   q1 = "رقم الطالب";
   q2 = "إسم الطالب";
@@ -133,7 +136,7 @@ export class CFormComponent implements OnInit {
 
   onFileSelected2(event: any) {
     const file: File = event.target.files[0];
-    if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+    if (file && ( file.type === 'application/pdf')) {
       const reader = new FileReader();
       reader.onload = () => {
         const uploadedFile: UploadedFile = {
@@ -167,7 +170,7 @@ export class CFormComponent implements OnInit {
 
  onFileSelected3(event: any) {
    const file: File = event.target.files[0];
-   if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+   if (file && ( file.type === 'application/pdf')) {
      const reader = new FileReader();
      reader.onload = () => {
        const uploadedFile: UploadedFile = {
@@ -201,7 +204,7 @@ export class CFormComponent implements OnInit {
 
 onFileSelected4(event: any) {
   const file: File = event.target.files[0];
-  if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+  if (file && ( file.type === 'application/pdf')) {
     const reader = new FileReader();
     reader.onload = () => {
       const uploadedFile: UploadedFile = {
@@ -234,7 +237,7 @@ deleteFile4() {
 
 onFileSelected5(event: any) {
  const file: File = event.target.files[0];
- if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+ if (file && ( file.type === 'application/pdf')) {
    const reader = new FileReader();
    reader.onload = () => {
      const uploadedFile: UploadedFile = {
@@ -268,7 +271,7 @@ deleteFile5() {
 
 onFileSelected6(event: any) {
  const file: File = event.target.files[0];
- if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+ if (file && ( file.type === 'application/pdf')) {
    const reader = new FileReader();
    reader.onload = () => {
      const uploadedFile: UploadedFile = {
@@ -302,7 +305,7 @@ deleteFile6() {
 
 onFileSelected7(event: any) {
  const file: File = event.target.files[0];
- if (file && (file.type === 'image/jpeg'|| file.type === 'application/pdf')) {
+ if (file && ( file.type === 'application/pdf')) {
    const reader = new FileReader();
    reader.onload = () => {
      const uploadedFile: UploadedFile = {
@@ -337,6 +340,11 @@ deleteFile7() {
 
 
 ngOnInit() {
+
+
+  this.student = {
+    fullName: this.formService.getSavedStudentName()
+  }
 
 
  
