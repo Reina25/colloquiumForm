@@ -33,6 +33,9 @@ export class CheckInfoComponent implements OnInit {
     
     this.studentID = this.formService.setStudentID(this.route.snapshot.queryParamMap.get("studentID"));
 
+    this.studentID = this.formService.saveStudentID();
+
+
 
     this.hash = this.formService.setHash(this.route.snapshot.queryParamMap.get("hash"));
 

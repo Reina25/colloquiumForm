@@ -342,11 +342,12 @@ deleteFile7() {
 
 ngOnInit() {
 
-
   this.student = {
-    fullName: this.formService.getSavedStudentName()
-  }
+    fullName: this.formService.getSavedStudentName(),
+    StudentID: this.formService.getSavedStudentID(),
+    program: this.formService.getSavedStudentProgram()
 
+  };
 
  
  // save student response of survey (if changed)
