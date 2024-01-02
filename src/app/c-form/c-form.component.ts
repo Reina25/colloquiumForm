@@ -349,6 +349,7 @@ ngOnInit() {
 
   };
 
+
  
  // save student response of survey (if changed)
   this.savedOption1 = sessionStorage.getItem('selectedOption1');
