@@ -24,7 +24,15 @@ export class CheckInfoComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private formService: FormServiceService) { }
 
 
+
+
+
+
+
+
   ngOnInit() {
+
+
 
     // to clear any saved data for new data to come 
     window.sessionStorage.clear();

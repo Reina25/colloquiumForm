@@ -51,33 +51,22 @@ export class CFormComponent implements OnInit {
 
   
 
-// name
+// place of birth
   selectedOption1: any 
   savedOption1: any;
 
-  // gender
+  // personal email
   selectedOption2: any 
   savedOption2: any;
 
-  // country code
-  selectedOptionExtra: any 
-  savedOptionExtra: any;
 
   // phone
   selectedOption3: any 
   savedOption3: any;
 
-  // email
+  // passport number
   selectedOption4: any 
   savedOption4: any;
-
-  // pob
-  selectedOption5: any 
-  savedOption5: any;
-
-  // dob
-  selectedOption6: any 
-  savedOption6: any;
 
 
   
@@ -368,15 +357,6 @@ ngOnInit() {
     
   }
 
-  this.savedOptionExtra = sessionStorage.getItem('selectedOptionExtra');
-
-
-  if (this.savedOptionExtra) {
-    this.selectedOptionExtra = this.savedOptionExtra;
-    this.saveSelectionExtra(this.selectedOptionExtra);
-   
-  }
-
   this.savedOption3 = sessionStorage.getItem('selectedOption3');
 
   if (this.savedOption3) {
@@ -392,28 +372,6 @@ ngOnInit() {
     this.saveSelection4(this.selectedOption4);
    
   }
-
-  this.savedOption5 = sessionStorage.getItem('selectedOption5');
-
-  if (this.savedOption5) {
-    this.selectedOption5 = this.savedOption5;
-    this.saveSelection5(this.selectedOption5);
-   
-  }
-
-
-  this.savedOption6 = sessionStorage.getItem('selectedOption6');
-
-  if (this.savedOption6) {
-    this.selectedOption6 = this.savedOption6;
-    this.saveSelection6(this.selectedOption6);
-   
-  }
-
-  // const storedFiles = localStorage.getItem('uploadedFiles');
-  // if (storedFiles) {
-  //   this.uploadedFiles = JSON.parse(storedFiles);
-  // }
 
   const storedFile1 = localStorage.getItem('selectedFile1');
   if (storedFile1) {
@@ -474,12 +432,6 @@ saveSelection2(newValue: string) {
   sessionStorage.setItem('selectedOption2', this.selectedOption2);
 }
 
-saveSelectionExtra(newValue: string) {
-  this.selectedOptionExtra = newValue;
-  sessionStorage.setItem('selectedOptionExtra', this.selectedOptionExtra);
-
-}
-
 saveSelection3(newValue: string) {
   this.selectedOption3 = newValue;
   sessionStorage.setItem('selectedOption3', this.selectedOption3);
@@ -488,17 +440,6 @@ saveSelection4(newValue: string) {
   this.selectedOption4 = newValue;
   sessionStorage.setItem('selectedOption4', this.selectedOption4);
 }
-saveSelection5(newValue: string) {
-  this.selectedOption5 = newValue;
-  sessionStorage.setItem('selectedOption5', this.selectedOption5);
-}
-
-saveSelection6(newValue: string) {
-  this.selectedOption6 = newValue;
-  sessionStorage.setItem('selectedOption6', this.selectedOption6);
-}
-
-
 
 
 

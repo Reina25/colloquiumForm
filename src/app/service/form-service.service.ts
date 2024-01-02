@@ -47,7 +47,10 @@ export class FormServiceService {
   }
 
 
-  
+
+
+  //  set get and save student data
+
   setStudentName(studentName: string) {
     this.fullName = studentName;
     return studentName;
@@ -126,8 +129,6 @@ export class FormServiceService {
 
         this.studentData.program = this.setStudentProgram(this.studentData.program);
         this.studentData.program = this.saveStudentProgram();
-
-
 
 
       });

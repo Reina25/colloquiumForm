@@ -27,7 +27,7 @@
 
 
                     <div [class.d-none]="submitted" id="form" class="form-area col-12 px-5  py-3">
-                        {{cForm.value | json}}
+                        <!-- {{cForm.value | json}} -->
 
                         
 
@@ -233,10 +233,15 @@
                                         <input type="text" name="PlaceofBirth" #studentPlaceBirth="ngModel"
                                             [class.is-invalid]="studentPlaceBirth.invalid && studentPlaceBirth.touched"
                                             class="form-control" [(ngModel)]="selectedOption1"
+                                            pattern="^[\u0621-\u064A\040]+$"
                                             (ngModelChange)="saveSelection1($event)" required>
-                                        <small class="text-danger"
-                                            [class.d-none]="studentPlaceBirth.untouched || studentPlaceBirth.valid">Place
-                                            of birth is required</small>
+                                            <div
+                                            *ngIf="studentPlaceBirth.touched && (studentPlaceBirth.invalid || studentPlaceBirth.errors)">
+                                            <small class="text-danger" *ngIf="studentPlaceBirth.errors['required']">Place
+                                                of birth is required</small>
+                                            <small class="text-danger" *ngIf="studentPlaceBirth.errors['pattern']">Place
+                                                of birth must be in arabic</small>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -253,21 +258,29 @@
 
 
 
+                                <div id="question 13 student phone number" class="col-4">
+                                    <div class="form-group">
+                                        <label>{{q13}}<span style="color: #ff0000; font-size: large;">*
+                                                &nbsp;</span></label>
+                                        <input type="tel" name="PhoneNumber" #studentPhone="ngModel"
+                                            [class.is-invalid]="studentPhone.invalid && studentPhone.touched"
+                                            class="form-control" [(ngModel)]="selectedOption3"
+                                            (ngModelChange)="saveSelection3($event)"
+                                            placeholder="Enter Phone number wih NO spaces" pattern="^\d{8}$" required>
+                                        <div
+                                            *ngIf="studentPhone.touched && (studentPhone.invalid || studentPhone.errors)">
+                                            <small class="text-danger" *ngIf="studentPhone.errors['required']">Phone
+                                                number is required</small>
+                                            <small class="text-danger" *ngIf="studentPhone.errors['pattern']">Phone
+                                                number must be 8 digits</small>
+                                        </div>
 
+                                    </div>
+                                </div>
 
                                
                                 
-                               
-
-                                <div id="question 13 student phone number" class="col-4">
-                                    <div class="form-group">
-                                        <label>{{q13}}<span style="color: #ff0000; font-size: large;">* &nbsp;</span></label>
-                                        <input type="text" name="PhoneNumber"
-
-                                         #PhoneNumber="ngModel"
-                                         class="form-control" readonly ngModel>
-                                    </div>
-                                </div>
+                            
 
                                 <div id="question 23 personal email" class="col-4">
                                     <div class="form-group">
@@ -311,8 +324,8 @@
                                                 &nbsp;</span></label>
                                         <input type="tel" name="PassportNumber" #PassportNumber="ngModel"
                                             [class.is-invalid]="PassportNumber.invalid && PassportNumber.touched"
-                                            class="form-control" [(ngModel)]="selectedOption3"
-                                            (ngModelChange)="saveSelection3($event)"
+                                            class="form-control" [(ngModel)]="selectedOption4"
+                                            (ngModelChange)="saveSelection4($event)"
                                              pattern="^[0-9a-zA-Z]{8,9}$|^\\d{8,9}$$" required >
                                         <div
                                             *ngIf="PassportNumber.touched && (PassportNumber.invalid || PassportNumber.errors)">
